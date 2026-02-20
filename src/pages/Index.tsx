@@ -40,7 +40,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <a href="#" className="flex items-center gap-2">
           <span className="text-2xl">💐</span>
-          <span className="text-xl font-bold text-gradient">Всем пучком</span>
+          <span className="text-xl font-bold text-gradient">Все пучком</span>
         </a>
         <nav className="hidden md:flex items-center gap-8">
           <a href="#catalog" className="text-sm font-medium hover:text-primary transition-colors">Каталог</a>
@@ -355,7 +355,7 @@ const Footer = () => (
         <div>
           <div className="flex items-center gap-2 mb-4">
             <span className="text-2xl">💐</span>
-            <span className="text-xl font-bold">Всем пучком</span>
+            <span className="text-xl font-bold">Все пучком</span>
           </div>
           <p className="text-sm text-white/60 leading-relaxed">Доставка свежих цветов и подарков по Москве и области. Делаем каждый день особенным.</p>
           <div className="flex gap-3 mt-4">
@@ -394,7 +394,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/40">
-        <p>© 2025 Всем пучком. Все права защищены.</p>
+        <p>© 2025 Все пучком. Все права защищены.</p>
         <p>Доставка цветов и подарков</p>
       </div>
     </div>
