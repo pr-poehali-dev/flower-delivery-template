@@ -220,7 +220,7 @@ const PromoSection = () => (
           </Button>
         </div>
         <div className="relative rounded-3xl overflow-hidden min-h-[320px]">
-          <img src={GIFT_IMG} alt="Подарки" className="absolute inset-0 w-full h-full object-cover" />
+          <img src={IMG_GIFTBOX} alt="Подарки" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <div className="relative h-full flex flex-col justify-end p-8 md:p-12 text-white">
             <span className="font-hand text-3xl mb-2">Новая коллекция</span>
