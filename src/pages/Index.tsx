@@ -20,18 +20,26 @@ const IMG_SWEET_HEART = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-848
 const IMG_SWEET_LOVE = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/bucket/b1c020e5-684d-41f4-bd22-0049236a9b95.jpg";
 const IMG_SWEET_BUTTERFLY = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/bucket/a73170bf-d806-4f34-9a30-4e3406dedcea.jpg";
 
+type Category = "all" | "flowers" | "sweet";
+
 const catalog = [
-  { id: 1, name: "Нежность", price: 3200, oldPrice: 3800, img: IMG_TENDERNESS, tag: "Хит" },
-  { id: 2, name: "Солнечный день", price: 4500, img: IMG_SUNNY, tag: "Новинка" },
-  { id: 3, name: "Романтика", price: 5800, oldPrice: 6500, img: IMG_ROMANCE, tag: "Скидка" },
-  { id: 4, name: "Подарочный бокс", price: 6200, img: IMG_GIFTBOX, tag: "" },
-  { id: 5, name: "Весеннее настроение", price: 2900, img: IMG_SPRING, tag: "Хит" },
-  { id: 6, name: "Люкс букет", price: 8900, oldPrice: 10500, img: IMG_LUX, tag: "Премиум" },
-  { id: 7, name: "Зефирный букет", price: 2000, img: IMG_SWEET_ZEFIR, tag: "Сладкие" },
-  { id: 8, name: "Лавандовый букет", price: 2000, img: IMG_SWEET_LILAC, tag: "Сладкие" },
-  { id: 9, name: "Букет-сердце", price: 2000, img: IMG_SWEET_HEART, tag: "Сладкие" },
-  { id: 10, name: "Букет с сердечками", price: 2000, img: IMG_SWEET_LOVE, tag: "Сладкие" },
-  { id: 11, name: "Букет с бабочками", price: 2000, img: IMG_SWEET_BUTTERFLY, tag: "Сладкие" },
+  { id: 1, name: "Нежность", price: 3200, oldPrice: 3800, img: IMG_TENDERNESS, tag: "Хит", category: "flowers" as Category },
+  { id: 2, name: "Солнечный день", price: 4500, img: IMG_SUNNY, tag: "Новинка", category: "flowers" as Category },
+  { id: 3, name: "Романтика", price: 5800, oldPrice: 6500, img: IMG_ROMANCE, tag: "Скидка", category: "flowers" as Category },
+  { id: 4, name: "Подарочный бокс", price: 6200, img: IMG_GIFTBOX, tag: "", category: "flowers" as Category },
+  { id: 5, name: "Весеннее настроение", price: 2900, img: IMG_SPRING, tag: "Хит", category: "flowers" as Category },
+  { id: 6, name: "Люкс букет", price: 8900, oldPrice: 10500, img: IMG_LUX, tag: "Премиум", category: "flowers" as Category },
+  { id: 7, name: "Зефирный букет", price: 2000, img: IMG_SWEET_ZEFIR, tag: "Сладкие", category: "sweet" as Category },
+  { id: 8, name: "Лавандовый букет", price: 2000, img: IMG_SWEET_LILAC, tag: "Сладкие", category: "sweet" as Category },
+  { id: 9, name: "Букет-сердце", price: 2000, img: IMG_SWEET_HEART, tag: "Сладкие", category: "sweet" as Category },
+  { id: 10, name: "Букет с сердечками", price: 2000, img: IMG_SWEET_LOVE, tag: "Сладкие", category: "sweet" as Category },
+  { id: 11, name: "Букет с бабочками", price: 2000, img: IMG_SWEET_BUTTERFLY, tag: "Сладкие", category: "sweet" as Category },
+];
+
+const filters: { key: Category; label: string }[] = [
+  { key: "all", label: "Все" },
+  { key: "flowers", label: "Цветочные" },
+  { key: "sweet", label: "Сладкие" },
 ];
 
 const features = [
@@ -160,7 +168,11 @@ const Features = () => (
   </section>
 );
 
-const Catalog = () => (
+const Catalog = () => {
+  const [activeFilter, setActiveFilter] = useState<Category>("all");
+  const filtered = activeFilter === "all" ? catalog : catalog.filter((i) => i.category === activeFilter);
+
+  return (
   <section id="catalog" className="py-16 md:py-24 bg-muted/30">
     <div className="container mx-auto px-4">
       <div className="text-center mb-12">
@@ -168,8 +180,20 @@ const Catalog = () => (
         <h2 className="text-3xl md:text-5xl font-extrabold mt-2">Популярные букеты</h2>
         <p className="text-muted-foreground mt-3 max-w-md mx-auto">Каждый букет собирается вручную из самых свежих цветов</p>
       </div>
+      <div className="flex justify-center gap-2 mb-8">
+        {filters.map((f) => (
+          <Button
+            key={f.key}
+            variant={activeFilter === f.key ? "default" : "outline"}
+            className={`rounded-full px-6 ${activeFilter === f.key ? "bg-gradient-accent text-white" : ""}`}
+            onClick={() => setActiveFilter(f.key)}
+          >
+            {f.label}
+          </Button>
+        ))}
+      </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {catalog.map((item) => (
+        {filtered.map((item) => (
           <Card key={item.id} className="group overflow-hidden border-0 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl bg-white">
             <div className="relative overflow-hidden bg-[#f5f0eb]">
               <img
@@ -210,7 +234,8 @@ const Catalog = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const PromoSection = () => (
   <section className="py-16 md:py-24">
