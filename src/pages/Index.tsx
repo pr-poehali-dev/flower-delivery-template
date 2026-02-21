@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 
-const HERO_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/f9fdc69f-65f9-4651-8320-1f07b87fad81.jpg";
+const HERO_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/bucket/6c43c842-4f81-4ea1-a97b-6f21c4535713.jpg";
 const BOUQUET_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/86860de4-115b-4ad3-9ea8-07fdf47cffb4.jpg";
 const GIFT_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/3421ee54-539b-40d3-b4be-0a24ad29a731.jpg";
 
