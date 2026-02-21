@@ -114,11 +114,13 @@ const Hero = () => (
         </div>
         <div className="relative hidden md:block">
           <div className="relative animate-float">
-            <img
-              src={HERO_IMG}
-              alt="Девушка с красивым букетом цветов"
-              className="w-full max-w-xl mx-auto rounded-[2rem] shadow-2xl shadow-primary/20 object-cover aspect-[3/4]"
-            />
+            <div className="w-full max-w-xl mx-auto rounded-[2rem] shadow-2xl shadow-primary/20 overflow-hidden aspect-[3/4]">
+              <img
+                src={HERO_IMG}
+                alt="Девушка с красивым букетом цветов"
+                className="w-full h-[120%] object-cover object-bottom"
+              />
+            </div>
 
           </div>
         </div>
