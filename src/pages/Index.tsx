@@ -14,8 +14,11 @@ const IMG_ROMANCE = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f
 const IMG_GIFTBOX = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/4fda8512-f92f-4e3e-a0b7-e02d2aef9a8a.jpg";
 const IMG_SPRING = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/9ed77d74-f874-4b65-855e-0fef251f14ee.jpg";
 const IMG_LUX = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/668a8d39-1b71-475b-9303-3a72df0c7397.jpg";
-const IMG_SWEET1 = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/4b903a02-a0c9-4c31-b330-4c9563a54dd5.jpg";
-const IMG_SWEET2 = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/a78d114b-63b4-4b04-a934-2f23f96c745e.jpg";
+const IMG_SWEET_ZEFIR = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/bucket/9f569f1e-5ee6-491f-bd3d-0ad378d14930.jpg";
+const IMG_SWEET_LILAC = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/bucket/ce679abf-6903-48cf-8363-59ef07af7aa1.jpg";
+const IMG_SWEET_HEART = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/bucket/6f10e426-804e-4c7e-b297-af6406ab5bd0.jpg";
+const IMG_SWEET_LOVE = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/bucket/b1c020e5-684d-41f4-bd22-0049236a9b95.jpg";
+const IMG_SWEET_BUTTERFLY = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/bucket/a73170bf-d806-4f34-9a30-4e3406dedcea.jpg";
 
 const catalog = [
   { id: 1, name: "Нежность", price: 3200, oldPrice: 3800, img: IMG_TENDERNESS, tag: "Хит" },
@@ -24,8 +27,11 @@ const catalog = [
   { id: 4, name: "Подарочный бокс", price: 6200, img: IMG_GIFTBOX, tag: "" },
   { id: 5, name: "Весеннее настроение", price: 2900, img: IMG_SPRING, tag: "Хит" },
   { id: 6, name: "Люкс букет", price: 8900, oldPrice: 10500, img: IMG_LUX, tag: "Премиум" },
-  { id: 7, name: "Сладкий букет", price: 2000, img: IMG_SWEET1, tag: "Новинка" },
-  { id: 8, name: "Клубничный букет", price: 2000, img: IMG_SWEET2, tag: "Сладкие" },
+  { id: 7, name: "Зефирный букет", price: 2000, img: IMG_SWEET_ZEFIR, tag: "Сладкие" },
+  { id: 8, name: "Лавандовый букет", price: 2000, img: IMG_SWEET_LILAC, tag: "Сладкие" },
+  { id: 9, name: "Букет-сердце", price: 2000, img: IMG_SWEET_HEART, tag: "Сладкие" },
+  { id: 10, name: "Букет с сердечками", price: 2000, img: IMG_SWEET_LOVE, tag: "Сладкие" },
+  { id: 11, name: "Букет с бабочками", price: 2000, img: IMG_SWEET_BUTTERFLY, tag: "Сладкие" },
 ];
 
 const features = [
@@ -165,11 +171,11 @@ const Catalog = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {catalog.map((item) => (
           <Card key={item.id} className="group overflow-hidden border-0 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl bg-white">
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden bg-[#f5f0eb]">
               <img
                 src={item.img}
                 alt={item.name}
-                className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
+                className={`w-full aspect-[4/3] group-hover:scale-105 transition-transform duration-500 ${item.tag === "Сладкие" ? "object-contain p-3" : "object-cover"}`}
               />
               {item.tag && (
                 <Badge className="absolute top-4 left-4 bg-gradient-accent text-white border-0 rounded-full px-3">
