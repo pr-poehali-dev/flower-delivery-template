@@ -7,16 +7,25 @@ import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 
 const HERO_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/bucket/7a1385c9-0a69-43e8-bb40-2fa1b47e618c.jpg";
-const BOUQUET_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/86860de4-115b-4ad3-9ea8-07fdf47cffb4.jpg";
-const GIFT_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/3421ee54-539b-40d3-b4be-0a24ad29a731.jpg";
+
+const IMG_TENDERNESS = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/6b73dea2-529e-48e8-af95-bdfdbba1586a.jpg";
+const IMG_SUNNY = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/ea9e2c02-85ef-46cd-963e-867de576e314.jpg";
+const IMG_ROMANCE = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/f5f59fc2-40b2-4712-b82d-897e25c41ab5.jpg";
+const IMG_GIFTBOX = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/4fda8512-f92f-4e3e-a0b7-e02d2aef9a8a.jpg";
+const IMG_SPRING = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/9ed77d74-f874-4b65-855e-0fef251f14ee.jpg";
+const IMG_LUX = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/668a8d39-1b71-475b-9303-3a72df0c7397.jpg";
+const IMG_SWEET1 = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/4b903a02-a0c9-4c31-b330-4c9563a54dd5.jpg";
+const IMG_SWEET2 = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/a78d114b-63b4-4b04-a934-2f23f96c745e.jpg";
 
 const catalog = [
-  { id: 1, name: "Нежность", price: 3200, oldPrice: 3800, img: BOUQUET_IMG, tag: "Хит" },
-  { id: 2, name: "Солнечный день", price: 4500, img: HERO_IMG, tag: "Новинка" },
-  { id: 3, name: "Романтика", price: 5800, oldPrice: 6500, img: BOUQUET_IMG, tag: "Скидка" },
-  { id: 4, name: "Подарочный бокс", price: 6200, img: GIFT_IMG, tag: "" },
-  { id: 5, name: "Весеннее настроение", price: 2900, img: HERO_IMG, tag: "Хит" },
-  { id: 6, name: "Люкс букет", price: 8900, oldPrice: 10500, img: BOUQUET_IMG, tag: "Премиум" },
+  { id: 1, name: "Нежность", price: 3200, oldPrice: 3800, img: IMG_TENDERNESS, tag: "Хит" },
+  { id: 2, name: "Солнечный день", price: 4500, img: IMG_SUNNY, tag: "Новинка" },
+  { id: 3, name: "Романтика", price: 5800, oldPrice: 6500, img: IMG_ROMANCE, tag: "Скидка" },
+  { id: 4, name: "Подарочный бокс", price: 6200, img: IMG_GIFTBOX, tag: "" },
+  { id: 5, name: "Весеннее настроение", price: 2900, img: IMG_SPRING, tag: "Хит" },
+  { id: 6, name: "Люкс букет", price: 8900, oldPrice: 10500, img: IMG_LUX, tag: "Премиум" },
+  { id: 7, name: "Сладкий букет", price: 2000, img: IMG_SWEET1, tag: "Новинка" },
+  { id: 8, name: "Клубничный букет", price: 2000, img: IMG_SWEET2, tag: "Сладкие" },
 ];
 
 const features = [
