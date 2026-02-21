@@ -119,19 +119,7 @@ const Hero = () => (
               alt="Девушка с красивым букетом цветов"
               className="w-full max-w-xl mx-auto rounded-[2rem] shadow-2xl shadow-primary/20 object-cover aspect-[3/4]"
             />
-            <div className="absolute -bottom-5 -left-5 bg-white/95 backdrop-blur-sm rounded-2xl p-5 shadow-xl flex items-center gap-4 animate-pulse-soft">
-              <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
-                <Icon name="Check" size={28} className="text-green-600" />
-              </div>
-              <div>
-                <p className="font-bold text-base">Доставлено!</p>
-                <p className="text-sm text-muted-foreground">5 минут назад</p>
-              </div>
-            </div>
-            <div className="absolute -top-5 -right-5 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl text-center">
-              <p className="text-3xl">💐</p>
-              <p className="text-sm font-bold mt-1">Свежие!</p>
-            </div>
+
           </div>
         </div>
       </div>
