@@ -23,7 +23,7 @@ const features = [
   { icon: "Truck", title: "Быстрая доставка", desc: "От 1 часа по городу" },
   { icon: "Shield", title: "Гарантия свежести", desc: "Только свежие цветы" },
   { icon: "Gift", title: "Красивая упаковка", desc: "Подарочное оформление" },
-  { icon: "Clock", title: "Работаем 24/7", desc: "Принимаем заказы круглосуточно" },
+  { icon: "Clock", title: "Без выходных", desc: "Ежедневно с 9:00 до 21:00" },
 ];
 
 const reviews = [
@@ -49,9 +49,9 @@ const Header = () => {
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Контакты</a>
         </nav>
         <div className="hidden md:flex items-center gap-3">
-          <a href="tel:+79991234567" className="text-sm font-semibold flex items-center gap-1.5 hover:text-primary transition-colors">
+          <a href="tel:+79069528766" className="text-sm font-semibold flex items-center gap-1.5 hover:text-primary transition-colors">
             <Icon name="Phone" size={16} />
-            +7 (999) 123-45-67
+            +7 (906) 952-87-66
           </a>
           <Button className="bg-gradient-accent hover:opacity-90 transition-opacity text-white rounded-full px-6">
             Заказать
@@ -67,8 +67,8 @@ const Header = () => {
           <a href="#delivery" onClick={() => setOpen(false)} className="text-sm font-medium">Доставка</a>
           <a href="#reviews" onClick={() => setOpen(false)} className="text-sm font-medium">Отзывы</a>
           <a href="#contact" onClick={() => setOpen(false)} className="text-sm font-medium">Контакты</a>
-          <a href="tel:+79991234567" className="text-sm font-semibold flex items-center gap-1.5">
-            <Icon name="Phone" size={16} /> +7 (999) 123-45-67
+          <a href="tel:+79069528766" className="text-sm font-semibold flex items-center gap-1.5">
+            <Icon name="Phone" size={16} /> +7 (906) 952-87-66
           </a>
         </div>
       )}
@@ -94,7 +94,7 @@ const Hero = () => (
             Дарите <span className="text-gradient font-extrabold">радость</span> с каждым букетом
           </p>
           <p className="mt-5 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg animate-fade-up-delay-2">
-            Свежие цветы, стильные подарки и быстрая доставка по городу. Сделайте день особенным!
+            Свежие цветы, стильные подарки и доставка по Хакасии и Красноярскому краю. Доставка по Сибири с любовью!
           </p>
           <div className="mt-10 flex flex-wrap gap-4 animate-fade-up-delay-3">
             <Button size="lg" className="bg-gradient-accent hover:opacity-90 text-white rounded-full px-10 text-lg h-16 shadow-lg shadow-primary/25">
@@ -311,7 +311,7 @@ const ContactSection = () => (
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Телефон</p>
-                <a href="tel:+79991234567" className="font-bold hover:text-primary transition-colors">+7 (999) 123-45-67</a>
+                <a href="tel:+79069528766" className="font-bold hover:text-primary transition-colors">+7 (906) 952-87-66</a>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -320,7 +320,16 @@ const ContactSection = () => (
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Адрес</p>
-                <p className="font-bold">г. Москва, ул. Цветочная, 1</p>
+                <p className="font-bold">г. Черногорск, ул. Юбилейная, 24б</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-gradient-accent rounded-xl flex items-center justify-center flex-shrink-0">
+                <Icon name="Mail" size={20} className="text-white" />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Почта</p>
+                <a href="mailto:fey.75@mail.ru" className="font-bold hover:text-primary transition-colors">fey.75@mail.ru</a>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -329,7 +338,7 @@ const ContactSection = () => (
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Режим работы</p>
-                <p className="font-bold">Круглосуточно, без выходных</p>
+                <p className="font-bold">Ежедневно с 9:00 до 21:00, без выходных</p>
               </div>
             </div>
           </div>
@@ -361,7 +370,7 @@ const Footer = () => (
             <span className="text-2xl">💐</span>
             <span className="text-xl font-bold">Все пучком</span>
           </div>
-          <p className="text-sm text-white/60 leading-relaxed">Доставка свежих цветов и подарков по Москве и области. Делаем каждый день особенным.</p>
+          <p className="text-sm text-white/60 leading-relaxed">Доставка цветов и подарков по Республике Хакасия и Красноярскому краю. Доставка по Сибири с любовью!</p>
           <div className="flex gap-3 mt-4">
             {["Instagram", "MessageCircle", "Send"].map((icon, i) => (
               <button key={i} className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
@@ -391,15 +400,16 @@ const Footer = () => (
         <div>
           <h4 className="font-bold mb-4">Контакты</h4>
           <ul className="space-y-2 text-sm text-white/60">
-            <li className="flex items-center gap-2"><Icon name="Phone" size={14} /> +7 (999) 123-45-67</li>
-            <li className="flex items-center gap-2"><Icon name="Mail" size={14} /> info@vsempuchkom.ru</li>
-            <li className="flex items-center gap-2"><Icon name="MapPin" size={14} /> г. Москва, ул. Цветочная, 1</li>
+            <li className="flex items-center gap-2"><Icon name="Phone" size={14} /> +7 (906) 952-87-66</li>
+            <li className="flex items-center gap-2"><Icon name="Mail" size={14} /> fey.75@mail.ru</li>
+            <li className="flex items-center gap-2"><Icon name="MapPin" size={14} /> г. Черногорск, ул. Юбилейная, 24б</li>
+            <li className="flex items-center gap-2"><Icon name="Clock" size={14} /> Ежедневно 9:00–21:00</li>
           </ul>
         </div>
       </div>
       <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/40">
         <p>© 2025 Все пучком. Все права защищены.</p>
-        <p>Доставка цветов и подарков</p>
+        <p>Доставка цветов по Сибири с любовью</p>
       </div>
     </div>
   </footer>
