@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 
-const HERO_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/88808ccd-6c0c-4278-a8b7-9a4168bc8296.jpg";
+const HERO_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/f9fdc69f-65f9-4651-8320-1f07b87fad81.jpg";
 const BOUQUET_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/86860de4-115b-4ad3-9ea8-07fdf47cffb4.jpg";
 const GIFT_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/files/3421ee54-539b-40d3-b4be-0a24ad29a731.jpg";
 
@@ -39,8 +39,8 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-border/50">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <a href="#" className="flex items-center gap-2">
-          <span className="text-2xl">💐</span>
-          <span className="text-xl font-bold text-gradient">Все пучком</span>
+          <span className="text-3xl">💐</span>
+          <span className="text-2xl font-extrabold text-gradient">Все пучком</span>
         </a>
         <nav className="hidden md:flex items-center gap-8">
           <a href="#catalog" className="text-sm font-medium hover:text-primary transition-colors">Каталог</a>
@@ -77,56 +77,60 @@ const Header = () => {
 };
 
 const Hero = () => (
-  <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-hero overflow-hidden">
-    <div className="absolute top-20 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-    <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/20 rounded-full blur-3xl" />
-    <div className="container mx-auto px-4 relative">
-      <div className="grid md:grid-cols-2 gap-8 items-center">
-        <div className="max-w-xl">
-          <Badge variant="secondary" className="mb-4 bg-secondary/30 text-foreground font-medium px-4 py-1.5 rounded-full animate-fade-up">
+  <section className="relative min-h-[100vh] flex items-center bg-gradient-hero overflow-hidden">
+    <div className="absolute top-20 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-3xl" />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+    <div className="container mx-auto px-4 relative pt-24 pb-16">
+      <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-2xl">
+          <Badge variant="secondary" className="mb-6 bg-secondary/30 text-foreground font-medium px-5 py-2 rounded-full text-sm animate-fade-up">
             🌸 Бесплатная доставка от 3 000 ₽
           </Badge>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight animate-fade-up-delay-1">
-            Дарите <span className="text-gradient">радость</span> с каждым букетом
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.05] tracking-tight animate-fade-up-delay-1">
+            Все пучком
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground leading-relaxed animate-fade-up-delay-2">
+          <p className="mt-2 text-2xl md:text-3xl font-semibold text-muted-foreground/80 animate-fade-up-delay-1">
+            Дарите <span className="text-gradient font-extrabold">радость</span> с каждым букетом
+          </p>
+          <p className="mt-5 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg animate-fade-up-delay-2">
             Свежие цветы, стильные подарки и быстрая доставка по городу. Сделайте день особенным!
           </p>
-          <div className="mt-8 flex flex-wrap gap-4 animate-fade-up-delay-3">
-            <Button size="lg" className="bg-gradient-accent hover:opacity-90 text-white rounded-full px-8 text-base h-14 shadow-lg shadow-primary/25">
-              <Icon name="ShoppingBag" size={20} />
+          <div className="mt-10 flex flex-wrap gap-4 animate-fade-up-delay-3">
+            <Button size="lg" className="bg-gradient-accent hover:opacity-90 text-white rounded-full px-10 text-lg h-16 shadow-lg shadow-primary/25">
+              <Icon name="ShoppingBag" size={22} />
               Выбрать букет
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 text-base h-14 border-2">
-              <Icon name="Gift" size={20} />
+            <Button size="lg" variant="outline" className="rounded-full px-10 text-lg h-16 border-2">
+              <Icon name="Gift" size={22} />
               Подарки
             </Button>
           </div>
-          <div className="mt-8 flex items-center gap-6 text-sm text-muted-foreground animate-fade-up-delay-3">
-            <span className="flex items-center gap-1.5"><Icon name="Star" size={16} className="text-yellow-500 fill-yellow-500" /> 4.9 рейтинг</span>
-            <span className="flex items-center gap-1.5"><Icon name="Users" size={16} /> 2 500+ клиентов</span>
-            <span className="flex items-center gap-1.5"><Icon name="Truck" size={16} /> от 1 часа</span>
+          <div className="mt-10 flex items-center gap-8 text-sm md:text-base text-muted-foreground animate-fade-up-delay-3">
+            <span className="flex items-center gap-2"><Icon name="Star" size={18} className="text-yellow-500 fill-yellow-500" /> 4.9 рейтинг</span>
+            <span className="flex items-center gap-2"><Icon name="Users" size={18} /> 2 500+ клиентов</span>
+            <span className="flex items-center gap-2"><Icon name="Truck" size={18} /> от 1 часа</span>
           </div>
         </div>
         <div className="relative hidden md:block">
           <div className="relative animate-float">
             <img
               src={HERO_IMG}
-              alt="Букет цветов"
-              className="w-full max-w-lg mx-auto rounded-3xl shadow-2xl shadow-primary/20 object-cover aspect-square"
+              alt="Девушка с красивым букетом цветов"
+              className="w-full max-w-xl mx-auto rounded-[2rem] shadow-2xl shadow-primary/20 object-cover aspect-[3/4]"
             />
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl flex items-center gap-3 animate-pulse-soft">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                <Icon name="Check" size={24} className="text-green-600" />
+            <div className="absolute -bottom-5 -left-5 bg-white/95 backdrop-blur-sm rounded-2xl p-5 shadow-xl flex items-center gap-4 animate-pulse-soft">
+              <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
+                <Icon name="Check" size={28} className="text-green-600" />
               </div>
               <div>
-                <p className="font-semibold text-sm">Доставлено!</p>
-                <p className="text-xs text-muted-foreground">5 минут назад</p>
+                <p className="font-bold text-base">Доставлено!</p>
+                <p className="text-sm text-muted-foreground">5 минут назад</p>
               </div>
             </div>
-            <div className="absolute -top-4 -right-4 bg-white rounded-2xl p-3 shadow-xl">
-              <p className="text-2xl">💐</p>
-              <p className="text-xs font-semibold mt-1">Свежие!</p>
+            <div className="absolute -top-5 -right-5 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl text-center">
+              <p className="text-3xl">💐</p>
+              <p className="text-sm font-bold mt-1">Свежие!</p>
             </div>
           </div>
         </div>
