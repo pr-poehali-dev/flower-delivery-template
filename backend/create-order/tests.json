@@ -1,0 +1,28 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "POST missing fields",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "", "phone": "", "product_name": ""},
+      "expectedStatus": 400,
+      "expectedBody": {"error": "string"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "POST valid order",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "Тест", "phone": "+79001234567", "product_name": "Нежность", "product_price": 3200, "comment": ""},
+      "expectedStatus": 200,
+      "expectedBody": {"success": true, "order_id": "number"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

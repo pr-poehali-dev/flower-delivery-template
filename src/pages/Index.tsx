@@ -4,7 +4,11 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import Icon from "@/components/ui/icon";
+import { toast } from "sonner";
+
+const ORDER_URL = "https://functions.poehali.dev/30a6c555-96a0-44f0-be78-17edbed246d0";
 
 const HERO_IMG = "https://cdn.poehali.dev/projects/319aab64-219d-4a9d-8489-4f531d583034/bucket/7a1385c9-0a69-43e8-bb40-2fa1b47e618c.jpg";
 
@@ -168,11 +172,94 @@ const Features = () => (
   </section>
 );
 
+const OrderModal = ({ product, open, onClose }: { product: typeof catalog[0] | null; open: boolean; onClose: () => void }) => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [comment, setComment] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !phone.trim() || !product) return;
+    setLoading(true);
+    try {
+      const res = await fetch(ORDER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, product_name: product.name, product_price: product.price, comment }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSuccess(true);
+        toast.success("Заказ оформлен! Мы скоро свяжемся с вами.");
+      } else {
+        toast.error(data.error || "Ошибка при оформлении");
+      }
+    } catch {
+      toast.error("Не удалось отправить заказ");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleClose = () => {
+    onClose();
+    setTimeout(() => { setName(""); setPhone(""); setComment(""); setSuccess(false); }, 300);
+  };
+
+  if (!product) return null;
+
+  return (
+    <Dialog open={open} onOpenChange={handleClose}>
+      <DialogContent className="sm:max-w-md rounded-2xl">
+        {success ? (
+          <div className="text-center py-6">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Icon name="Check" size={32} className="text-green-600" />
+            </div>
+            <h3 className="text-xl font-bold mb-2">Заказ оформлен!</h3>
+            <p className="text-muted-foreground">Мы свяжемся с вами в ближайшее время для подтверждения заказа</p>
+            <Button className="mt-6 bg-gradient-accent text-white rounded-full px-8" onClick={handleClose}>Отлично</Button>
+          </div>
+        ) : (
+          <>
+            <DialogHeader>
+              <DialogTitle className="text-xl">Оформить заказ</DialogTitle>
+              <DialogDescription>Заполните данные и мы свяжемся с вами</DialogDescription>
+            </DialogHeader>
+            <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-xl mb-2">
+              <img src={product.img} alt={product.name} className="w-16 h-16 rounded-lg object-cover" />
+              <div>
+                <p className="font-bold">{product.name}</p>
+                <p className="text-primary font-extrabold">{product.price.toLocaleString()} ₽</p>
+              </div>
+            </div>
+            <form className="space-y-3" onSubmit={handleSubmit}>
+              <Input placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)} className="h-12 rounded-xl" required />
+              <Input placeholder="Телефон" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} className="h-12 rounded-xl" required />
+              <Textarea placeholder="Комментарий (необязательно)" value={comment} onChange={(e) => setComment(e.target.value)} className="rounded-xl resize-none" rows={2} />
+              <Button type="submit" disabled={loading} className="w-full h-12 bg-gradient-accent hover:opacity-90 text-white rounded-xl text-base font-bold">
+                {loading ? <Icon name="Loader2" size={18} className="animate-spin" /> : <Icon name="Send" size={18} />}
+                {loading ? "Отправляем..." : "Оформить заказ"}
+              </Button>
+              <p className="text-xs text-muted-foreground text-center">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
+            </form>
+          </>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 const Catalog = () => {
   const [activeFilter, setActiveFilter] = useState<Category>("all");
   const filtered = activeFilter === "all" ? catalog : catalog.filter((i) => i.category === activeFilter);
+  const [orderProduct, setOrderProduct] = useState<typeof catalog[0] | null>(null);
 
   return (
+  <>
+  <OrderModal product={orderProduct} open={!!orderProduct} onClose={() => setOrderProduct(null)} />
   <section id="catalog" className="py-16 md:py-24 bg-muted/30">
     <div className="container mx-auto px-4">
       <div className="text-center mb-12">
@@ -218,9 +305,9 @@ const Catalog = () => {
                   <span className="text-sm text-muted-foreground line-through">{item.oldPrice.toLocaleString()} ₽</span>
                 )}
               </div>
-              <Button className="w-full mt-4 bg-gradient-accent hover:opacity-90 text-white rounded-full h-11">
+              <Button className="w-full mt-4 bg-gradient-accent hover:opacity-90 text-white rounded-full h-11" onClick={() => setOrderProduct(item)}>
                 <Icon name="ShoppingCart" size={16} />
-                В корзину
+                Заказать
               </Button>
             </div>
           </Card>
@@ -234,6 +321,7 @@ const Catalog = () => {
       </div>
     </div>
   </section>
+  </>
   );
 };
 
